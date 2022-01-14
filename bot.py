@@ -26,16 +26,31 @@ async def doxxrut(ctx,arg):
     #envío del mensaje con los datos (si los obtuvo)
     for x in myresult:
         await ctx.send(x)
-#intento de búsqueda en la db con el nombre, no lo sé implementar aún
-"""
-@client.command()
 async def doxxname(ctx,arg):
-   name = arg
-    name = "'" + name + "'"
-    sqlname = "SELECT * FROM chilenos_db WHERE nombre LIKE " + name
-    mycursor.execute(sqlname)
-    myresult = mycursor.fetchall()
-    for x in myresult:
-        await ctx.send(x)
-"""
+    name = arg.replace("_","+")
+    nameforreplacebeta = name.replace("+", " ")
+    nameforreplacealpha = nameforreplacebeta.upper()
+    url= 'INSERTE ENTRYPOINT AQUÍ' + name
+    res= requests.get(url)
+    html_page = res.content
+    soup = BeautifulSoup(html_page, 'html.parser')
+    text = soup.find_all(text=True)
+    output = ''
+    blacklist = [
+        '[document]',
+
+    'noscript',
+        'header',
+        'html',
+        'meta',
+        'head', 
+        'input',
+        'script',
+        'style',
+    ]
+    for t in text:
+        if t.parent.name not in blacklist:
+            output += '{} '.format(t)
+            salida = "Su doxxeo es: " + output
+    await ctx.send(salida)
 client.run('INSERTE TOKEN AQUÍ')
