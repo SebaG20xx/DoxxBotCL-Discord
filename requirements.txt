@@ -1,0 +1,4 @@
+discord.py
+requests
+beautifulsoup4
+mysql-connector-python
