@@ -2,7 +2,21 @@
 Bot simple que hace una consulta a una bd de mysql con datos, en este caso aplicadas a una base de datos con nombres,ruts,sexo y dirección de parte del Servel.
 
 ¿Qué funciona?
-El bot pero no diría que al 100%, ya que en el caso de no estar disponible una información en la base de datos no lo informa, pero si haciendo consultas básicas a través del RUT
+-Consultas mediante rut (Requiere acceso a una db)
+-Consultas mediante nombre (Requiere entrypoint)
 
-¿Qué NO funciona?
-Hacer búsquedas por nombre, ya que no sé optimizar una tabla para búsquedas
+Tareas pendientes:
+- [ ] Agregar mensaje en el caso de que la busqueda por rut sea vacía
+- [ ] Mejorar la forma de entrega de datos
+- [ ] Cambiar la librería discord.py (está un poco obsoleta)
+
+Comandos:
+-;doxxrut (Hace la consulta mediante RUT)
+-;doxxname (Hace la consulta mediante Nombre)
+
+Requerimientos: 
+-Discord.py 
+-mysql-connector-python (Consulta mediante mysql)
+-beautifulsoup4 (Website Scraping)
+-requests (Descargar sitio)
+Encuentra todo esto en el archivo requirements.txt para ser instalado
