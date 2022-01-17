@@ -1,4 +1,5 @@
-discord.py
-requests
 beautifulsoup4
+discord.py
 mysql-connector-python
+python-dotenv
+requests

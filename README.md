@@ -19,4 +19,5 @@ Requerimientos:
 - mysql-connector-python (Consulta mediante mysql)
 - beautifulsoup4 (Website Scraping)
 - requests (Descargar sitio)
+- python-dotenv
 Encuentra todo esto en el archivo requirements.txt para ser instalado
