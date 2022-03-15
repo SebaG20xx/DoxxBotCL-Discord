@@ -1,5 +1,8 @@
-beautifulsoup4
 discord.py
-mysql-connector-python
-python-dotenv
 requests
+beautifulsoup4
+dnspython
+motor
+mysql-connector-python
+bs4
+rut-chile
