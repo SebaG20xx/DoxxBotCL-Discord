@@ -22,4 +22,4 @@ async def doxxname(ctx,arg):
     rutdoxx = out[1].text
     Doxxtotal = "Resultados: " + name + ", " + rutdoxx + ", " + address
     await ctx.send(Doxxtotal)
-client.run("OTMxMjg0OTY4ODMzOTcwMjE2.YeCMtw.gv4P7iDRLVljhUZBeNdusT2CaPI")
+client.run("INSERTE TOKEN AQUÍ")
