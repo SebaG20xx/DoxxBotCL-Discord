@@ -1,8 +1,4 @@
 discord.py
 requests
-beautifulsoup4
-dnspython
-motor
-mysql-connector-python
 bs4
 rut-chile
