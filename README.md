@@ -9,7 +9,7 @@ Tareas pendientes:
 - [ ] Agregar mensaje en el caso de que la busqueda por rut y nombre no obtenga resultados
 
 Comandos:
-- ;doxxrut <rut> (Hace la consulta mediante RUT)
+- ;doxxrut <"rut"> (Hace la consulta mediante RUT)
 - ;doxxname <Nombre_Separado_Por_Guiones_Bajos> (Hace la consulta mediante Nombre)
 
 Requerimientos: 
