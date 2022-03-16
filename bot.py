@@ -13,10 +13,9 @@ async def doxxname(ctx,arg):
     user = ctx.message.author
     name = arg.replace("_"," ")
     URL = "https://www.nombrerutyfirma.com/buscar"
-    historialname = open('historialname.txt', 'w')
-    namehistorial = name + "/n"
+    historialname = open('historialname.txt', 'a')
+    namehistorial = name + ", Solicitado por: " + str(ctx.message.author)  + ", " + "Id Discord: " + str(ctx.message.author.id)  + '\n'
     historialname.write(namehistorial)
-    print("procesando nombre:", name)
     response = requests.get(URL, params={'term': name}).text
     soup = BeautifulSoup(response, 'html.parser')
     out = soup.find_all('td')
@@ -31,14 +30,14 @@ async def doxxrut(ctx,arg):
     user = ctx.message.author
     rut = arg
     URL = "https://www.nombrerutyfirma.com/rut"
-    historialrut = open('historialrut.txt', 'w')
-    ruthistorial = rut + "/n"
+    historialrut = open('historialrut.txt', 'a')
+    ruthistorial = rut + ", Solicitado por: " + str(ctx.message.author)  + ", " + "Id Discord: " + str(ctx.message.author.id)  + '\n'
     historialrut.write(ruthistorial)
     response = requests.get(URL, params={'term': format_rut_with_dots(rut)}).text
     soup = BeautifulSoup(response, 'html.parser')
     out = soup.find_all('td')
     address = out[3].text + " " + out[4].text
     nombrerut = out[0].text
-    Doxxtotalrut = "Resultados: " + nombrerut + " ," + rut + " ," + address
+    Doxxtotalrut = "Resultados: " + nombrerut + ", " + rut + " ," + address
     await ctx.send(Doxxtotalrut)
 client.run("INSERT_TOKEN_HERE")
