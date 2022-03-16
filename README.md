@@ -7,11 +7,13 @@ Bot simple que hace una consulta al sitio "Nombrerutyfirma.com"
 
 Tareas pendientes:
 - [ ] Agregar mensaje en el caso de que la busqueda por rut y nombre no obtenga resultados
-- [ ] Cambiar la librería discord.py (está un poco obsoleta)
 
 Comandos:
-- ;doxxrut (Hace la consulta mediante RUT)
-- ;doxxname (Hace la consulta mediante Nombre)
+- ;doxxrut <rut> (Hace la consulta mediante RUT)
+- ;doxxname <Nombre_Separado_Por_Guiones_Bajos> (Hace la consulta mediante Nombre)
 
 Requerimientos: 
-Serán agregados con función en unos momentos, requirements.txt funciona
+- Discord.py (Integración de discord)
+- requests (Request HTTP para el sitio)
+- bs4 (Scraper HTML)
+- rut-chile (Le da el formato correcto al rut)
