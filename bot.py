@@ -19,12 +19,13 @@ async def doxxname(ctx,arg):
     response = requests.get(URL, params={'term': name}).text
     soup = BeautifulSoup(response, 'html.parser')
     out = soup.find_all('td')
-    address = out[3].text + " " + out[4].text
-    rutdoxx = out[1].text
-    print("RUT encontrado:", out[1].text)
-    print("dirección:", address)
-    Doxxtotal = "Resultados" + name + " ," + rutdoxx + " ," + address
-    await ctx.send(Doxxtotal)
+    if out == []:
+        await ctx.send("No hay resultados disponibles")
+    else:
+        address = out[3].text + " " + out[4].text
+        rutdoxx = out[1].text
+        Doxxtotal = "Resultados" + name + " ," + rutdoxx + " ," + address
+        await ctx.send(Doxxtotal)
 @client.command(aliases=['doxxruts','test'])
 async def doxxrut(ctx,arg):
     user = ctx.message.author
@@ -36,8 +37,32 @@ async def doxxrut(ctx,arg):
     response = requests.get(URL, params={'term': format_rut_with_dots(rut)}).text
     soup = BeautifulSoup(response, 'html.parser')
     out = soup.find_all('td')
-    address = out[3].text + " " + out[4].text
-    nombrerut = out[0].text
-    Doxxtotalrut = "Resultados: " + nombrerut + ", " + rut + " ," + address
-    await ctx.send(Doxxtotalrut)
-client.run("INSERT_TOKEN_HERE")
+    if out == []:
+        await ctx.send("No hay resultados disponibles")
+    else:
+        address = out[3].text + " " + out[4].text
+        nombrerut = out[0].text
+        Doxxtotalrut = "Resultados: " + nombrerut + ", " + rut + " ," + address
+        await ctx.send(Doxxtotalrut)
+@client.command(aliases=['doxxpatentes'])
+async def doxxpatente(ctx,arg):
+    user = ctx.message.author
+    patente = arg
+    URL = 'https://www.volanteomaleta.com/pat'
+    historialpatente = open('historialbusquedapatente.txt', 'a')
+    patentehistorial = patente + ", Solicitado por: " + str(ctx.message.author) + ", " + "Id Discord: " +str(ctx.message.author.id) + '\n'
+    historialpatente.write(patentehistorial)
+    response = requests.get(URL, params={'term': patente}).text
+    soup = BeautifulSoup(response, 'html.parser')
+    out = soup.find_all('td')
+    if out == []:
+        await ctx.send("No hay resultados disponibles")
+    else:
+        marca = out[2].text
+        modelo = out[3].text + " Año: " + out[6].text
+        numeromotor = "Numero de motor: " + out[5].text
+        nombredueno = out[7].text
+        rutdueno = out[4].text
+        doxxtotalpatente = "Resultados: " + marca + modelo + numeromotor + nombredueno + rutdueno
+        await ctx.send(doxxtotalpatente)
+client.run("Insert_Token_Here")
