@@ -1,16 +1,17 @@
 # DoxxBotCL-Discord
-Bot simple que hace una consulta al sitio "Nombrerutyfirma.com"
+Bot simple que hace una consulta al sitio "Nombrerutyfirma.com" y "Volanteomaleta.com"
 
 ¿Qué funciona?
 - Consultas mediante rut
 - Consultas mediante nombre
 
-Tareas pendientes:
-- [ ] Agregar mensaje en el caso de que la busqueda por rut y nombre no obtenga resultados
+~~Tareas pendientes:~~ Todo listo!
+- [x] Agregar mensaje en el caso de que la busqueda por rut y nombre no obtenga resultados
 
 Comandos:
 - ;doxxrut <"rut"> (Hace la consulta mediante RUT)
 - ;doxxname <Nombre_Separado_Por_Guiones_Bajos> (Hace la consulta mediante Nombre)
+- ;doxxpatente <patente> (Consulta mediante patente gracias a volanteomaleta.com)
 
 Requerimientos: 
 - Discord.py (Integración de discord)
