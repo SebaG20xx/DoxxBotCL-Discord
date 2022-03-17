@@ -58,10 +58,10 @@ async def doxxpatente(ctx,arg):
     if out == []:
         await ctx.send("No hay resultados disponibles")
     else:
-        marca = out[2].text
-        modelo = out[3].text + " Año: " + out[6].text
-        numeromotor = "Numero de motor: " + out[5].text
-        nombredueno = out[7].text
+        marca = out[2].text + " "
+        modelo = out[3].text + " Año: " + out[6].text + " "
+        numeromotor = "Numero de motor: " + out[5].text + " "
+        nombredueno = out[7].text + " "
         rutdueno = out[4].text
         doxxtotalpatente = "Resultados: " + marca + modelo + numeromotor + nombredueno + rutdueno
         await ctx.send(doxxtotalpatente)
