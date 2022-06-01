@@ -15,7 +15,7 @@ Bot simple que hace una consulta al sitio "Nombrerutyfirma.com" y "Volanteomalet
 Comandos:
 - ;doxxrut <"rut"> (Hace la consulta mediante RUT)
 - ;doxxname <Nombre_Separado_Por_Guiones_Bajos> (Hace la consulta mediante Nombre)
-- ;doxxpatente <patente> (Consulta mediante patente gracias a volanteomaleta.com)
+- ;doxxpatente <"patente"> (Consulta mediante patente gracias a volanteomaleta.com)
 
 Requerimientos: 
 - Python 3.9 o superior  
