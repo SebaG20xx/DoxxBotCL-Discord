@@ -24,8 +24,12 @@ async def doxxname(ctx,arg):
     else:
         address = out[3].text + " " + out[4].text
         rutdoxx = out[1].text
-        Doxxtotal = "Resultados" + name + " ," + rutdoxx + " ," + address
+        namedoxx = out[0].text
+        Doxxtotal = "Resultado para: " + name
         await ctx.send(Doxxtotal)
+        Doxxtotal = name + " ," + rutdoxx + " ," + address
+        await ctx.send(Doxxtotal)
+        await ctx.send("Nota, este es solo el primer resultado de la búsqueda.")
 @client.command(aliases=['doxxruts','test'])
 async def doxxrut(ctx,arg):
     user = ctx.message.author
@@ -38,12 +42,13 @@ async def doxxrut(ctx,arg):
     soup = BeautifulSoup(response, 'html.parser')
     out = soup.find_all('td')
     if out == []:
-        await ctx.send("No hay resultados disponibles")
+        await ctx.send("No hay resultados disponibles o Hay restricción de Cloudflare")
     else:
         address = out[3].text + " " + out[4].text
         nombrerut = out[0].text
-        Doxxtotalrut = "Resultados: " + nombrerut + ", " + rut + " ," + address
+        Doxxtotalrut = "Resultados para: "  + rut
         await ctx.send(Doxxtotalrut)
+        Doxxtotalrut = nombrerut + ", " + rut + " ," + address
 @client.command(aliases=['doxxpatentes'])
 async def doxxpatente(ctx,arg):
     user = ctx.message.author
@@ -56,7 +61,7 @@ async def doxxpatente(ctx,arg):
     soup = BeautifulSoup(response, 'html.parser')
     out = soup.find_all('td')
     if out == []:
-        await ctx.send("No hay resultados disponibles")
+        await ctx.send("No hay resultados disponibles o Hay restricción de Cloudflare")
     else:
         marca = out[2].text + " "
         modelo = out[3].text + " Año: " + out[6].text + " "
