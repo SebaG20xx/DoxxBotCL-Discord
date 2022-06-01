@@ -18,9 +18,15 @@ async def doxxname(ctx,arg):
     historialname.write(namehistorial)
     response = requests.get(URL, params={'term': name}).text
     soup = BeautifulSoup(response, 'html.parser')
+    banned = False
     out = soup.find_all('td')
-    if out == []:
+    botprotection = (soup.find_all('h2'))
+    if botprotection != []:
+        banned = True
+    if out == [] and banned == False:
         await ctx.send("No hay resultados disponibles")
+    elif banned == True:
+        await ctx.send("El bot ha sido baneado :(")
     else:
         address = out[3].text + " " + out[4].text
         rutdoxx = out[1].text
@@ -41,8 +47,13 @@ async def doxxrut(ctx,arg):
     response = requests.get(URL, params={'term': format_rut_with_dots(rut)}).text
     soup = BeautifulSoup(response, 'html.parser')
     out = soup.find_all('td')
-    if out == []:
-        await ctx.send("No hay resultados disponibles o Hay restricción de Cloudflare")
+    botprotection = (soup.find_all('h2'))
+    if botprotection != []:
+        banned = True
+    if out == [] and banned == False:
+        await ctx.send("No hay resultados disponibles")
+    elif banned == True:
+        await ctx.send("El bot ha sido baneado :(")
     else:
         address = out[3].text + " " + out[4].text
         nombrerut = out[0].text
@@ -60,8 +71,13 @@ async def doxxpatente(ctx,arg):
     response = requests.get(URL, params={'term': patente}).text
     soup = BeautifulSoup(response, 'html.parser')
     out = soup.find_all('td')
-    if out == []:
-        await ctx.send("No hay resultados disponibles o Hay restricción de Cloudflare")
+    botprotection = (soup.find_all('h2'))
+    if botprotection != []:
+        banned = True
+    if out == [] and banned == False:
+        await ctx.send("No hay resultados disponibles")
+    elif banned == True:
+        await ctx.send("El bot ha sido baneado :(")
     else:
         marca = out[2].text + " "
         modelo = out[3].text + " Año: " + out[6].text + " "
