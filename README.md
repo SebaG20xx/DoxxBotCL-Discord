@@ -5,6 +5,9 @@ Bot simple que hace una consulta al sitio "Nombrerutyfirma.com" y "Volanteomalet
 - Consultas mediante rut
 - Consultas mediante nombre
 
+¿Cómo usarlo?
+- Insertar tu token de bot de discord en la línea 73
+
 ~~Tareas pendientes:~~ Todo listo!
 - [x] Agregar mensaje en el caso de que la busqueda por rut y nombre no obtenga resultados
 
