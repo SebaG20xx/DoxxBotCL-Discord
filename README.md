@@ -8,9 +8,9 @@ Bot simple que hace una consulta al sitio "Nombrerutyfirma.com" y "Volanteomalet
 ¿Cómo usarlo?
 - Insertar tu token de bot de discord en la línea 73
 
-~~Tareas pendientes:~~ ~~Todo listo!~~ Tareas Pendientes
+~~Tareas pendientes:~~ Todo listo!
 - [x] Agregar mensaje en el caso de que la busqueda por rut y nombre no obtenga resultados
-- [ ] Agregar mensaje en el caso de que la protección CloudFlare impida la consulta
+- [x] Agregar mensaje en el caso de que la protección CloudFlare impida la consulta
 
 Comandos:
 - ;doxxrut <"rut"> (Hace la consulta mediante RUT)
