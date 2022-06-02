@@ -33,7 +33,7 @@ async def doxxname(ctx,arg):
         namedoxx = out[0].text
         Doxxtotal = "Resultado para: " + name
         await ctx.send(Doxxtotal)
-        Doxxtotal = name + " ," + rutdoxx + " ," + address
+        Doxxtotal = namedoxx + " ," + rutdoxx + " ," + address
         await ctx.send(Doxxtotal)
         await ctx.send("Nota, este es solo el primer resultado de la búsqueda.")
 @client.command(aliases=['doxxruts','test'])
