@@ -1,4 +1,5 @@
 # DoxxBotCL-Discord
+# NOTA, EL SITIO AGREGÓ CAPTCHA POR CLOUDFLARE, ESTOY TRABAJANDO EN UNA SOLUCIÓN
 Bot simple que hace una consulta al sitio "Nombrerutyfirma.com" y "Volanteomaleta.com"
 
 ¿Qué funciona?
@@ -8,9 +9,10 @@ Bot simple que hace una consulta al sitio "Nombrerutyfirma.com" y "Volanteomalet
 ¿Cómo usarlo?
 - Insertar tu token de bot de discord en la línea 73
 
-~~Tareas pendientes:~~ Todo listo!
+Tareas pendientes: ~~Todo listo!~~
 - [x] Agregar mensaje en el caso de que la busqueda por rut y nombre no obtenga resultados
 - [x] Agregar mensaje en el caso de que la protección CloudFlare impida la consulta
+- [ ] Agregar bypass al captcha cloudflare
 
 Comandos:
 - ;doxxrut <"rut"> (Hace la consulta mediante RUT)
