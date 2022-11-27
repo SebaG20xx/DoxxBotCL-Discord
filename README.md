@@ -7,12 +7,12 @@ Bot simple que hace una consulta al sitio "Nombrerutyfirma.com" y "Volanteomalet
 - Consultas mediante nombre
 
 ¿Cómo usarlo?
-- Insertar tu token de bot de discord en la línea 73
+- Insertar tu token de bot de discord en la línea 85
 
-Tareas pendientes: ~~Todo listo!~~
+~~Tareas pendientes:~~ Todo listo!
 - [x] Agregar mensaje en el caso de que la busqueda por rut y nombre no obtenga resultados
 - [x] Agregar mensaje en el caso de que la protección CloudFlare impida la consulta
-- [ ] Agregar bypass al captcha cloudflare
+- [x] Agregar bypass al captcha cloudflare
 
 Comandos:
 - ;doxxrut <"rut"> (Hace la consulta mediante RUT)
@@ -22,6 +22,6 @@ Comandos:
 Requerimientos: 
 - Python 3.9 o superior  
 - Discord.py (Integración de discord)
-- requests (Request HTTP para el sitio)
+- CloudScrap (Request HTTP para el sitio + bypass Cloudflare)
 - bs4 (Scraper HTML)
 - rut-chile (Le da el formato correcto al rut)
