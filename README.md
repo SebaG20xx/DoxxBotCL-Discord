@@ -20,7 +20,7 @@ Comandos:
 - ;doxxpatente <"patente"> (Consulta mediante patente gracias a volanteomaleta.com)
 
 Requerimientos: 
-- Python 3.9 o superior  
+- Python 3.9 
 - Discord.py (Integración de discord)
 - CloudScrap (Request HTTP para el sitio + bypass Cloudflare)
 - bs4 (Scraper HTML)
