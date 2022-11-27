@@ -1,10 +1,11 @@
 import discord
 from discord.ext import commands
-import requests
-from time import sleep
+import cloudscraper
 from bs4 import BeautifulSoup
 from rut_chile.rut_chile import format_rut_with_dots
-client = commands.Bot(command_prefix = ';')
+intents = discord.Intents.all()
+scrap = cloudscraper.create_scraper()
+client = commands.Bot(command_prefix = ';',intents=intents)
 @client.event
 async def on_ready():
     print('Bot is ready')
@@ -16,17 +17,12 @@ async def doxxname(ctx,arg):
     historialname = open('historialname.txt', 'a')
     namehistorial = name + ", Solicitado por: " + str(ctx.message.author)  + ", " + "Id Discord: " + str(ctx.message.author.id)  + '\n'
     historialname.write(namehistorial)
-    response = requests.get(URL, params={'term': name}).text
+    response = scrap.get(URL, params={'term': name}).text
     soup = BeautifulSoup(response, 'html.parser')
-    banned = False
     out = soup.find_all('td')
-    botprotection = (soup.find_all('h2'))
-    if botprotection != []:
-        banned = True
-    if out == [] and banned == False:
+
+    if out == []:
         await ctx.send("No hay resultados disponibles")
-    elif banned == True:
-        await ctx.send("El bot ha sido baneado :(")
     else:
         address = out[3].text + " " + out[4].text
         rutdoxx = out[1].text
@@ -44,7 +40,7 @@ async def doxxrut(ctx,arg):
     historialrut = open('historialrut.txt', 'a')
     ruthistorial = rut + ", Solicitado por: " + str(ctx.message.author)  + ", " + "Id Discord: " + str(ctx.message.author.id)  + '\n'
     historialrut.write(ruthistorial)
-    response = requests.get(URL, params={'term': format_rut_with_dots(rut)}).text
+    response = scrap.get(URL, params={'term': format_rut_with_dots(rut)}).text
     soup = BeautifulSoup(response, 'html.parser')
     out = soup.find_all('td')
     botprotection = (soup.find_all('h2'))
@@ -68,7 +64,7 @@ async def doxxpatente(ctx,arg):
     historialpatente = open('historialbusquedapatente.txt', 'a')
     patentehistorial = patente + ", Solicitado por: " + str(ctx.message.author) + ", " + "Id Discord: " +str(ctx.message.author.id) + '\n'
     historialpatente.write(patentehistorial)
-    response = requests.get(URL, params={'term': patente}).text
+    response = scrap.get(URL, params={'term': patente}).text
     soup = BeautifulSoup(response, 'html.parser')
     out = soup.find_all('td')
     botprotection = (soup.find_all('h2'))

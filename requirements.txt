@@ -1,4 +1,4 @@
 discord.py
-requests
+cloudscraper
 bs4
 rut-chile
