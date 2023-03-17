@@ -1,5 +1,4 @@
 # DoxxBotCL-Discord
-# NOTA, EL SITIO AGREGÓ CAPTCHA POR CLOUDFLARE, ESTOY TRABAJANDO EN UNA SOLUCIÓN
 Bot simple que hace una consulta al sitio "Nombrerutyfirma.com" y "Volanteomaleta.com"
 
 ¿Qué funciona?
