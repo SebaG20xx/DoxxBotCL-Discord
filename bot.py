@@ -3,9 +3,14 @@ from discord.ext import commands
 import cloudscraper
 from bs4 import BeautifulSoup
 from rut_chile.rut_chile import format_rut_with_dots
+import requests
+import json
+from PIL import Image
+import tempfile
 intents = discord.Intents.all()
 scrap = cloudscraper.create_scraper()
 client = commands.Bot(command_prefix = ';',intents=intents)
+
 @client.event
 async def on_ready():
     print('Bot is ready')
@@ -82,4 +87,44 @@ async def doxxpatente(ctx,arg):
         rutdueno = out[4].text
         doxxtotalpatente = "Resultados: " + marca + modelo + numeromotor + nombredueno + rutdueno
         await ctx.send(doxxtotalpatente)
+
+@client.command()
+async def phoneinfo(ctx, phone_number):
+    headers = {
+        'User-Agent': 'CeludeitorAPI-TuCulitoSacaLlamaAUFAUF'
+    }
+    response = requests.post(BASE_URL, data={"txttlf": phone_number}, headers=headers)
+    data = response.json()
+
+    if not data['error']:
+        phone_info = json.loads(data['data'])
+        if phone_info['fuente']:
+            fuente_info = "\n".join([f"Nombre: {fuente['nombre']}" for fuente in phone_info['fuente']])
+            await ctx.send(f"**Información de {phone_number}:**\n{fuente_info}")
+        else:
+            await ctx.send("Lo sentimos, no encontramos información sobre el teléfono en la fuente principal.")
+
+        if phone_info['whatsapp']:
+            tiene_whatsapp = 'Si tiene' if phone_info['whatsapp']['tiene_whatsapp'] else ' No tiene'
+            await ctx.send(f"**WhatsApp:** {tiene_whatsapp}")
+
+            if phone_info['whatsapp']['foto_perfil']:
+                profile_pic_url = phone_info['whatsapp']['foto_perfil']
+                image_response = requests.get(profile_pic_url, stream=True)
+                image = Image.open(image_response.raw)
+
+                with tempfile.NamedTemporaryFile(delete=False, suffix=".jpg") as temp_file:
+                    image.save(temp_file, format="JPEG")
+                    await ctx.send(file=discord.File(temp_file.name))
+
+                whatsapp_status = json.loads(phone_info['whatsapp']['estado'])
+                await ctx.send(f"**Estado:** {whatsapp_status['status']}")
+                await ctx.send(f"**Última Actualización:** {whatsapp_status['setAt']}")
+        else:
+            await ctx.send("**WhatsApp:** No tiene")
+
+        await ctx.send(f"**_cva:** {phone_info['_cva']}")
+    else:
+        await ctx.send("El número indicado es inválido, intenta nuevamente.")
+
 client.run("Insert_Token_Here")
