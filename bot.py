@@ -46,22 +46,17 @@ async def doxxrut(ctx,arg):
     historialrut = open('historialrut.txt', 'a')
     ruthistorial = rut + ", Solicitado por: " + str(ctx.message.author)  + ", " + "Id Discord: " + str(ctx.message.author.id)  + '\n'
     historialrut.write(ruthistorial)
-    response = scrap.get(URL, params={'term': format_rut_with_dots(rut)}).text
+    response = scrap.get(URL, params={'term': str(format_rut_with_dots(rut))}).text
     soup = BeautifulSoup(response, 'html.parser')
     out = soup.find_all('td')
-    botprotection = (soup.find_all('h2'))
-    if botprotection != []:
-        banned = True
-    if out == [] and banned == False:
+    if out == []:
         await ctx.send("No hay resultados disponibles")
-    elif banned == True:
-        await ctx.send("El bot ha sido baneado :(")
     else:
         address = out[3].text + " " + out[4].text
         nombrerut = out[0].text
-        Doxxtotalrut = "Resultados para: "  + rut
-        await ctx.send(Doxxtotalrut)
+        await ctx.send("Resultados para: "  + rut)
         Doxxtotalrut = nombrerut + ", " + rut + " ," + address
+        await ctx.send(Doxxtotalrut)
 @client.command(aliases=['doxxpatentes'])
 async def doxxpatente(ctx,arg):
     user = ctx.message.author
