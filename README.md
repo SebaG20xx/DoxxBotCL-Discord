@@ -1,6 +1,6 @@
 # DoxxBotCL-Discord
 Bot simple que hace una consulta al sitio "Nombrerutyfirma.com" y "Volanteomaleta.com", junto con poder idenfiticar el número de teléfono y su foto de whatsapp gracias a
-"Celuzador" por @Theblood
+["Celuzador"](https://github.com/Theblood/Celuzador) por [Theblood](https://github.com/Theblood)
 
 
 ¿Qué funciona?
