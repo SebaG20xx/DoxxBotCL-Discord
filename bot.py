@@ -10,6 +10,7 @@ import tempfile
 intents = discord.Intents.all()
 scrap = cloudscraper.create_scraper()
 client = commands.Bot(command_prefix = ';',intents=intents)
+BASE_URL = "https://celuzador.online/celuzadorApi.php"
 
 @client.event
 async def on_ready():
