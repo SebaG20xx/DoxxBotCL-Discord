@@ -31,4 +31,3 @@ Requerimientos:
 - bs4 (Scraper HTML)
 - rut-chile (Le da el formato correcto al rut)
 - request
-- pillow
