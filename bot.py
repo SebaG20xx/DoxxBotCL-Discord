@@ -13,9 +13,8 @@ async def on_ready():
     print('Bot is ready')
 
 @client.command(aliases=['doxxnombre','testnombre'])
-async def doxxname(ctx,arg):
+async def doxxname(ctx,*, name):
     user = ctx.message.author
-    name = arg.replace("_"," ")
     URL = "https://www.nombrerutyfirma.com/buscar"
     historialname = open('historialname.txt', 'a')
     namehistorial = name + ", Solicitado por: " + str(ctx.message.author)  + ", " + "Id Discord: " + str(ctx.message.author.id)  + '\n'
@@ -23,18 +22,19 @@ async def doxxname(ctx,arg):
     response = scrap.get(URL, params={'term': name}).text
     soup = BeautifulSoup(response, 'html.parser')
     out = soup.find_all('td')
-
     if out == []:
         await ctx.send("No hay resultados disponibles")
     else:
-        address = out[3].text + " " + out[4].text
-        rutdoxx = out[1].text
-        namedoxx = out[0].text
-        Doxxtotal = "Resultado para: " + name
-        await ctx.send(Doxxtotal)
-        Doxxtotal = namedoxx + " ," + rutdoxx + " ," + address
-        await ctx.send(Doxxtotal)
-        await ctx.send("Nota, este es solo el primer resultado de la búsqueda.")
+            total_personas = len(out) // 5
+            await ctx.send(f"Total de personas encontradas: {total_personas}")
+
+            for i in range(0, len(out), 5):
+                nombre = out[i].text
+                rut = out[i+1].text
+                direccion = out[i+3].text + " " + out[i+4].text
+                resultado = f"{nombre}, {rut}, {direccion}"
+                await ctx.send(resultado)
+
 
 @client.command(aliases=['doxxruts','test'])
 async def doxxrut(ctx,arg):
